@@ -47,7 +47,7 @@ const DeleteDog = () => {
         <div className="form">
             <h1>Do you really want to delete {dog?.name}?</h1>
             <button onClick={handleSubmit}>Yes</button>
-            <Link to="/dogs"><button className='cancel'>No</button></Link>
+            <Link to={"/dogs"}><button className='cancel'>No</button></Link>
         </div>
         </main>
     );

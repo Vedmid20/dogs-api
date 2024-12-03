@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import LabelAndInput from "./LabelAndInput";
 
 const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
-    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    function handleUsernameChange(e: React.ChangeEvent<HTMLInputElement>) {
         setUsername(e.target.value);
-    };
+    }
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -34,6 +36,8 @@ const LoginForm = () => {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user_name", username);
             alert('Login Successfully')
+            navigate('/dogs');
+            window.location.reload();
         } else{
             alert(data.message)
         }
