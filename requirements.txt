@@ -1,0 +1,56 @@
+{
+  "version": "0.0.0",
+  "name": "geolocation",
+  "dependencies": {
+    "@types/react-dom": {
+      "version": "18.0.11",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.0.11.tgz",
+      "overridden": false
+    },
+    "@types/react": {
+      "version": "18.0.31",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-18.0.31.tgz",
+      "overridden": false
+    },
+    "@vitejs/plugin-react": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-3.1.0.tgz",
+      "overridden": false
+    },
+    "axios": {
+      "version": "1.7.8",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.7.8.tgz",
+      "overridden": false
+    },
+    "react-dom": {
+      "version": "18.2.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz",
+      "overridden": false
+    },
+    "react-router-dom": {
+      "version": "6.28.0",
+      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.28.0.tgz",
+      "overridden": false
+    },
+    "react-router": {
+      "version": "6.28.0",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.28.0.tgz",
+      "overridden": false
+    },
+    "react": {
+      "version": "18.2.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-18.2.0.tgz",
+      "overridden": false
+    },
+    "typescript": {
+      "version": "4.9.5",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz",
+      "overridden": false
+    },
+    "vite": {
+      "version": "4.5.5",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-4.5.5.tgz",
+      "overridden": false
+    }
+  }
+}

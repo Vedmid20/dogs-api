@@ -1,0 +1,108 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+h1{
+    text-align: center;
+}
+
+main{
+    margin-top: 100px;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #45a049;
+}
+
+.form .cancel{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form .cancel:hover{
+    background-color: #d32f2f;
+}
+
+.form .back{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #9d9d9d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form .back:hover{
+    background-color: #757575;
+}
+
+.form img{
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.form h6{
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.form label{
+    display: flex;
+    justify-content: start;
+}
+
+.form li{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 10px;
+    color: #757575;
+    transition: .2s all ease;
+}
+
+.form li:hover{
+    background-color: #e0e0e0;
+}
