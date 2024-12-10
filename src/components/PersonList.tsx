@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDogs, setLoading, setError } from '../store/dogsSlice';
 
 type Dog = {
   _id: string;
@@ -10,42 +12,66 @@ type Dog = {
   color: string;
 }
 
-export default class PersonList extends React.Component {
-  state = {
-    persons: [] as Dog[]
-  }
+const DogList = () => {
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { dogs, loading, error } = useSelector((state: any) => state.dogs);
 
-  componentDidMount() {
+  const getDogs = () => {
+    if (!token) {
+      return;
+    }
+    dispatch(setLoading(true));
     axios.get(`https://dogs.kobernyk.com/api/v1/dogs`, {
       headers: {
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        "Authorization": `Bearer ${token}`
       }
-    })
-    .then(res => {
-      const dogs = res.data;
-      this.setState({ persons: dogs });
-    })
-    .catch(error => {
-      console.error('Error fetching dogs:', error);
-      alert('Failed to fetch dogs');
+    }).then(response => {
+      dispatch(setDogs(response.data));
+      console.log(response.data);
+    }).catch(error => {
+
+      navigate('/login');
+    }).finally(() => {
+      dispatch(setLoading(false));
     });
   }
 
-  render() {
-    return (
-      <div className="form" style={{ marginTop: '10px' }}>
-          <ul>
-            {
-              this.state.persons.map(person => (
-                <div key={person._id}>
-                  <Link to={`/${person._id}`}><li style={{marginBottom: '-2px', marginTop: '15px'}}>Dog: {person.name}</li></Link><hr />
-                  <Link to={`/${person._id}/edit`} style={{ marginLeft: '10px'}}><li style={{marginBottom: '-10px'}}>{person.name}: Edit</li></Link>
-                  <Link to={`/${person._id}/delete`} style={{ marginLeft: '10px'}}><li>{person.name}: Delete</li></Link>
-                </div>
-              ))
-            }
-          </ul>
-      </div>
-    )
+  useEffect(() => {
+    getDogs();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
   }
-}
+   if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div className="form" style={{ marginTop: '10px' }}>
+      {loading && <p>Завантаження...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      <ul>
+        {dogs.map((dog: any) => (
+          <div key={dog._id}>
+            <Link to={`/${dog._id}`}>
+              <li style={{ marginBottom: '-2px', marginTop: '15px' }}>Dog: {dog.name}</li>
+            </Link>
+            <hr />
+            <Link to={`/${dog._id}/edit`} style={{ marginLeft: '10px' }}>
+              <li style={{ marginBottom: '-10px' }}>{dog.name}: Edit</li>
+            </Link>
+            <Link to={`/${dog._id}/delete`} style={{ marginLeft: '10px' }}>
+              <li>{dog.name}: Delete</li>
+            </Link>
+          </div>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default DogList;
